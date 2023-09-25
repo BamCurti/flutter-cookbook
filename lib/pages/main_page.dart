@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
           'Quick & Easy',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: const Color.fromRGBO(32, 26, 24, 1),
       ),
       body: ListView.builder(
           itemCount: recipeDummyInfo.length,

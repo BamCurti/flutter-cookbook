@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cookbook/data/recipe.dart';
+import 'package:cookbook/pages/recipe_detail.dart';
 
 class RecipeIsland extends StatelessWidget {
   final RecipeInfo recipeInfo;
@@ -8,24 +9,30 @@ class RecipeIsland extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Card(
-        child: Stack(
-          alignment: AlignmentDirectional.bottomCenter,
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width - 20,
-              height: 200,
-              child: Image(
-                fit: BoxFit.cover,
-                image: AssetImage(recipeInfo.imagePath),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width - 20,
+                height: 200,
+                child: Image(
+                  fit: BoxFit.cover,
+                  image: AssetImage(recipeInfo.imagePath),
+                ),
               ),
-            ),
-            IslandTitle(recipeInfo: recipeInfo)
-          ],
+              IslandTitle(recipeInfo: recipeInfo)
+            ],
+          ),
         ),
       ),
       onTap: () {
-        print("I was clicked ${recipeInfo.title}");
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => RecipeDetail(info: recipeInfo),
+        ));
       },
     );
   }

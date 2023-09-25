@@ -6,6 +6,7 @@ class RecipeInfo {
   final String imagePath;
   final List<String> ingredients;
   final List<String> steps;
+  bool isFavorite = false;
 
   RecipeInfo(
       {required this.title,
@@ -17,6 +18,10 @@ class RecipeInfo {
       required this.steps});
 
   String time() => "$timeOfPreparation min";
+
+  toogleFavorite() {
+    isFavorite = !isFavorite;
+  }
 }
 
 var recipeDummyInfo = [
@@ -57,7 +62,7 @@ var recipeDummyInfo = [
         "boil the water - add the salt to it once it boils"
       ]),
   RecipeInfo(
-      title: "Toast Hawaii",
+      title: "Hamburger with fries",
       timeOfPreparation: 40,
       difficulty: "Simple",
       priceRange: "Expensive",
